@@ -447,13 +447,13 @@ public with sharing class EEREReviewController implements EEREIRecordViewer{
         //selectedFinding.editRecord();
        // insert newFinding;
        //selectedFinding = newFinding;
-  		//newFinding = selectedFinding;
+      //newFinding = selectedFinding;
         initialize();
     
     }
     
     public void editFinding(){
-   		System.debug('selectedRecordId ' + selectedRecordId);
+       System.debug('selectedRecordId ' + selectedRecordId);
         if (selectedRecordId!=null) {
             for (EERE_Finding__c rec:findingList) {
                 if (rec.id==selectedRecordId) {
@@ -469,7 +469,7 @@ public with sharing class EEREReviewController implements EEREIRecordViewer{
     
         public void saveFinding(){
 
-    		if(selectedFinding.Required_Corrections__c == 'Corrective Measure'){
+        if(selectedFinding.Required_Corrections__c == 'Corrective Measure'){
             selectedFinding.Finding_Status__c = 'CM Required';
             }
             else if (selectedFinding.Required_Corrections__c == 'Possible Corrective Action Plan' && selectedFinding.CAP_Review_Recommended__c==null && selectedFinding.CAP_Required__c==null){
@@ -491,8 +491,8 @@ public with sharing class EEREReviewController implements EEREIRecordViewer{
     try {
             Database.upsert(selectedFinding);
             selectedFinding = new EERE_Finding__c();
-        	isEditMode = false;
-        	initialize();
+          isEditMode = false;
+          initialize();
             
             
         } catch (DMLException ex) {
@@ -504,7 +504,7 @@ public with sharing class EEREReviewController implements EEREIRecordViewer{
     }
     
     public void cancelFinding(){
-   		selectedFinding = new EERE_Finding__c();
+       selectedFinding = new EERE_Finding__c();
         isEditMode = true;
     
     }
@@ -584,9 +584,9 @@ public with sharing class EEREReviewController implements EEREIRecordViewer{
                         initialize();
                         
                         } catch (Exception e) 
-                        {	
-                        	editSuccess = false;
-                        	System.debug('HELLO EXCEPTION');
+                        {  
+                          editSuccess = false;
+                          System.debug('HELLO EXCEPTION');
                             ApexPages.addMessages(e);
 
                         }
@@ -595,9 +595,9 @@ public with sharing class EEREReviewController implements EEREIRecordViewer{
                     }
         }
         
-	public void cancelEdit(){
-	initialize();
-	}
+  public void cancelEdit(){
+  initialize();
+  }
     
     public void cancelNew(){
     newReview = new ReviewWrapper(null);
